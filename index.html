@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Buds</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light Gray */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background-color: #2E8B57; /* Dark Olive Green */
+            border: none;
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+
+        .navbar p.navbar-brand {
+            color: #fff; /* White */
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .navbar-nav>li>a {
+            color: #fff; /* White */
+        }
+
+        .navbar-nav>li>a:hover {
+            background-color: #3CB371; /* Medium Sea Green */
+        }
+
+        .container {
+            padding-top: 20px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-top {
+            max-height: 150px; /* Set a fixed height for the images */
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .card-body {
+            padding: 15px;
+            height: 100%;
+        }
+
+        .text-black {
+            color: #333; /* Dark Gray */
+        }
+
+        h1.text-black {
+            border-bottom: 2px solid #2E8B57; /* Dark Olive Green */
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a><p class="navbar-brand">Book Buds</p></a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            {% for i in range(book_name|length)%}
+            <div class="col-md-3" style="margin-bottom: 20px;">
+                <div class="card">
+                    <img class="card-img-top" src="{{ image[i] }}" alt="{{ book_name[i] }}">
+                    <div class="card-body">
+                        <p class="text-black">{{ book_name[i] }}</p>
+                        <h4 class="text-black">{{ author[i] }}</h4>
+                        <h4 class="text-black">{{ votes[i] }} Votes</h4>
+                        <h4 class="text-black">Rating: {{ rating[i] }}/5</h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
